@@ -1,0 +1,45 @@
+xrun(64): 20.03-s010: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.03-s010: Started on Mar 08, 2023 at 16:00:50 +07
+xrun
+	-access rw
+	-licqueue
+	-64BIT
+	-l run.log
+	testbench.v
+	Flash_bounder.v
+file: testbench.v
+	module worklib.testbench:v
+		errors: 0, warnings: 0
+file: Flash_bounder.v
+	module worklib.Flash_bounder:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		testbench
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.Flash_bounder:v <0x3aee4fa2>
+			streams:   7, words:  7254
+		worklib.testbench:v <0x29208891>
+			streams:   6, words:  3992
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 2       2
+		Registers:               9       9
+		Scalar wires:            3       -
+		Vectored wires:          1       -
+		Always blocks:           6       6
+		Initial blocks:          2       2
+		Pseudo assignments:      3       3
+		Simulation timescale:  1ns
+	Writing initial simulation snapshot: worklib.testbench:v
+Loading snapshot worklib.testbench:v .................... Done
+xcelium> source /home/share_file/cadence/installs/XCELIUM2003/tools/xcelium/files/xmsimrc
+xcelium> run
+Simulation complete via $finish(1) at time 890 NS + 0
+./testbench.v:42 	$finish;
+xcelium> exit
+TOOL:	xrun(64)	20.03-s010: Exiting on Mar 08, 2023 at 16:00:51 +07  (total: 00:00:01)

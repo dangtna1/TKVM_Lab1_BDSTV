@@ -1,0 +1,159 @@
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set toolbar-txe_waveform_toggle-WaveWindow {
+  usual
+  position -pos 1
+}
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+preferences set toolbar-Windows-WaveWindow {
+  usual
+  position -pos 2
+}
+preferences set toolbar-WaveZoom-WaveWindow {
+  usual
+  position -pos 1
+}
+
+#
+# Databases
+#
+database require waves -search {
+	./waves.trn
+	/data/vlsi2023/l01group2/2012970/work/simulation_env/waves.trn
+}
+
+#
+# Mnemonic Maps
+#
+mmap new  -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new  -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1920x1017+0+0}] != ""} {
+    window geometry "Waveform 1" 1920x1017+0+0
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar select designbrowser
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 175 \
+    -units ns \
+    -valuewidth 75
+waveform baseline set -time 0
+
+set id [waveform add -signals  {
+	waves::testbench.rst_n
+	} ]
+set id [waveform add -signals  {
+	waves::testbench.flick
+	} ]
+set id [waveform add -signals  {
+	waves::testbench.clk
+	} ]
+set id [waveform add -signals  {
+	{waves::testbench.LED[15:0]}
+	} ]
+
+waveform xview limits 0 890ns
+
+#
+# Waveform Window Links
+#
+
+#
+# Source Browser windows
+#
+if {[catch {window new SrcBrowser -name "Source Browser 2" -geometry 700x525+0+0}] != ""} {
+    window geometry "Source Browser 2" 700x525+0+0
+}
+window target "Source Browser 2" on
+srcbrowser using {Source Browser 2}
+srcbrowser set \
+    -primarycursor TimeA \
+    -units ns \
+    -radix default \
+    -showstrength 0 \
+    -showcallstack 0 \
+    -displayvalues 0
+
+srcbrowser sidebar visibility partial
+
+#
+# Schematic Tracer windows
+#
+if {[catch {window new SchematicWindow -name "Schematic Tracer 1" -geometry 900x600+0+0}] != ""} {
+    window geometry "Schematic Tracer 1" 900x600+0+0
+}
+window target "Schematic Tracer 1" on
+schematic using "Schematic Tracer 1"
+schematic sidebar visibility partial
+schematic set \
+    -radix default \
+    -fullsignalname 0 \
+    -showvalue 0 \
+    -showstrength 0 \
+    -showgrey 0 \
+    -tracemode Single \
+    -showrtl 1 \
+    -showcells 1 \
+    -showcellpins 0
+schematic timecontrol set -lock 0
+schematic restore -state {# String saved with Nlview 6.7r2  2017-11-02 bk=1.4313 VDI=40 GEI=35 GUI=TK:8.6 non-TLS,tclcompat
+#  -string
+# non-default properties - (restore without -noprops)
+property attrcolor #40e0d0
+property attrfontsize 10
+property boxmaxwidth 400
+property boxmingap 40
+property boxminheight 40
+property boxminwidth 100
+property buscolor #00ff00
+property fillcolor1 #000000
+property fillcolor2 #000000
+property gatecellname 1
+property netcolor #00ff00
+property objecthighlight0 #ff00aa
+property objecthighlight1 #ff00aa
+property objecthighlight2 #00ff00
+property objecthighlight3 #ffff00
+property objecthighlight9 #ffffaf
+property pinattrmax 200
+property selectionappearance 2
+property selectioncolor #ffffaf
+property sheetheight 0
+property sheetwidth 0
+property showhierpinname 1
+property showinvisibles 1
+property showmarks 1
+#
+module new module {}
+load symbol DAI_SOURCE_IN {} DEF port 0 input -loc -14 0 0 0 pinattrdsp @name -cr -2 -5 8i attrdsp @cell -ll -10 16 10 path 0 -6 9 -6 12 -3 12 6 0 6 0 -6 path 12 -3 9 -3 9 -6 path 2 -3 6 -3 path 2 0 10 0 path 2 3 10 3
+load symbol DAI_SOURCE_OUT {} DEF port 0 output -loc 26 0 12 0 pinattrdsp @name -cl 30 -5 8i attrdsp @cell -ll -10 16 10 path 0 -6 9 -6 12 -3 12 6 0 6 0 -6 path 12 -3 9 -3 9 -6 path 2 -3 6 -3 path 2 0 10 0 path 2 3 10 3
+levelinfo -pg 1 0 0 -top 0 -bot 10
+show
+scrollpos -151 -68
+#
+}
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 600x250+0+0
+
+#
+# Layout selection
+#

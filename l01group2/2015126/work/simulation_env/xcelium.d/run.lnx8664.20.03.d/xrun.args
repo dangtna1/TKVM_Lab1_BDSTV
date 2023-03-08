@@ -1,0 +1,12 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-access
+rw
+-licqueue
+-64BIT
+-l
+run.log
+testbench.v
+Flash_bounder.v

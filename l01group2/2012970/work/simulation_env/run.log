@@ -1,0 +1,16 @@
+xrun(64): 20.03-s010: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.03-s010: Started on Mar 08, 2023 at 19:51:20 +07
+xrun
+	-access rw
+	-licqueue
+	-64BIT
+	-l run.log
+	testbench.v
+	Flash_bounder.v
+Loading snapshot worklib.testbench:v .................... Done
+xcelium> source /home/share_file/cadence/installs/XCELIUM2003/tools/xcelium/files/xmsimrc
+xcelium> run
+Simulation complete via $finish(1) at time 890 NS + 0
+./testbench.v:42 	$finish;
+xcelium> exit
+TOOL:	xrun(64)	20.03-s010: Exiting on Mar 08, 2023 at 19:51:20 +07  (total: 00:00:00)
