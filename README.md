@@ -5,8 +5,11 @@
 * Nghiêm Lương Sơn (2014373) 
 
 # flasher_bounder
-Simulation in waveform:
+Simulation in waveform using modelsim
 <img src="https://github.com/dangtna1/TKVM_Lab1_BDSTV/blob/flash_bounder/simulation_overall.PNG"> 
+<br/>
+Simulation in waveform using cadence
+<img src="https://github.com/dangtna1/TKVM_Lab1_BDSTV/blob/flash_bounder/cadence_sim.PNG"> 
 <br/>
 For more details, you can run simulation yourself!
 <br/>
