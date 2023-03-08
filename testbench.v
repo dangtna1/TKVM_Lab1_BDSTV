@@ -29,7 +29,16 @@ begin
 	#160
 	flick = 1;
 
-	#100 
+	#265
+	rst_n = 0;
+	
+	#5
+	rst_n = 1;
+
+	#10
+	flick = 0;
+
+	#300 
 	$finish;
 end
 
