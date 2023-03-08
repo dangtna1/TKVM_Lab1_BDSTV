@@ -10,7 +10,7 @@ integer N, i;
 
 //operation mode
 parameter IDLE 		  =  2'b00;
-parameter UP	      =  2'B01;
+parameter UP	      	  =  2'B01;
 parameter DOWN 		  =  2'b10;
 parameter KICK_BACK	  =  2'b11;
 
