@@ -2,9 +2,9 @@ module Flash_bounder(clk, rst_n, flick, LED);
 
 input wire clk, rst_n, flick;
 
-output reg [15:0]LED;
+output reg [15:0] LED;
 
-reg [1:0]operation;
+reg [1:0] operation;
 
 integer N, i;
 
@@ -15,17 +15,13 @@ parameter DOWN 		  =  2'b10;
 parameter KICK_BACK	  =  2'b11;
 
 //States
+reg [5: 0] state, next_state;
 parameter INIT            =  6'b000001;
 parameter ZERO_TO_FIVE    =  6'b000010;
 parameter OFF_TO_ZERO     =  6'b000100;
 parameter ZERO_TO_TEN     =  6'b001000;
 parameter OFF_TO_FOUR     =  6'b010000;
 parameter FOUR_TO_FIFTEEN = 6'B100000;
-
-parameter SIZE         =  6;
-
-reg [SIZE - 1: 0] state;
-reg [SIZE - 1: 0] next_state;
 
 // Change state block
 always @(posedge clk or negedge rst_n)
